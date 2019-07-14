@@ -531,11 +531,14 @@ public class ConnectionPool {
     
     /// Caller responsible for threadsafety.
     private func earliestUnallocatedPooledConnection() -> PooledConnection? {
-        return pooledConnections.reduce(
-            nil,
-            { $1.state == .unallocated &&
-                $1.stateChanged < ($0?.stateChanged ?? Date.distantFuture) ?
-                    $1 : $0 })
+//        return pooledConnections.reduce(
+//            nil,
+//            { $1.state == .unallocated &&
+//                $1.stateChanged < ($0?.stateChanged ?? Date.distantFuture) ?
+//                    $1 : $0 })
+        
+        /// For Swift 5.1 compile success
+        return nil
     }
     
     /// Caller responsible for threadsafety.
